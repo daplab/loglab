@@ -63,7 +63,7 @@ export HADOOP_CLASSPATH="$OUR_CLASSPATH:/etc/hive/conf"
 export HADOOP_OPTS="${JAVA_OPTS} ${HADOOP_OPTS}"
 export YARN_OPTS="${JAVA_OPTS} ${HADOOP_OPTS}"
 
-command="yarn jar $LIBDIR/loglab.jar ch.daplab.hivepartition.HiveAutoPartitionerCli"
+command="yarn jar $LIBDIR/logspammer.jar ch.daplab.loglab.Spam"
 
 echo $command $@
 $command $@
