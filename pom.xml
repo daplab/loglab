@@ -367,6 +367,15 @@
                             <username>${rpm.username}</username>
                             <groupname>${rpm.groupname}</groupname>
                         </mapping>
+                        <!-- set all directory permissions -->
+                        <mapping>
+                            <configuration>true</configuration>
+                            <directory>${rpm.path}/config</directory>
+                            <recurseDirectories>true</recurseDirectories>
+                            <filemode>0755</filemode>
+                            <username>${rpm.username}</username>
+                            <groupname>${rpm.groupname}</groupname>
+                        </mapping>
                         <mapping>
                             <directory>${rpm.path}/bin</directory>
                             <recurseDirectories>true</recurseDirectories>
@@ -400,6 +409,20 @@
                             <filemode>0755</filemode>
                             <username>${rpm.username}</username>
                             <groupname>${rpm.groupname}</groupname>
+                        </mapping>
+                        <!-- We exclude the dir because the perms were defined above recursively -->
+                        <mapping>
+                            <configuration>true</configuration>
+                            <directory>${rpm.path}/config</directory>
+                            <directoryIncluded>false</directoryIncluded>
+                            <filemode>0644</filemode>
+                            <username>${rpm.username}</username>
+                            <groupname>${rpm.groupname}</groupname>
+                            <sources>
+                                <source>
+                                    <location>${project.basedir}/src/main/config</location>
+                                </source>
+                            </sources>
                         </mapping>
                         <!-- We exclude the dir because the perms were defined above recursively -->
                         <mapping>
