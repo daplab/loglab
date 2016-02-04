@@ -25,13 +25,21 @@ public class Spam implements Tool {
 
     Random r = new Random();
 
+    long i = 0;
+
     @Override
     public int run(String[] strings) throws Exception {
 
         this.loremIpsum = new LoremIpsum();
 
         while (run) {
-            LOG.warn(loremIpsum.getWords( r.nextInt(200) + 50, r.nextInt(5) + 1 ));
+            i++;
+            if (r.nextInt(10000) == 0) {
+                Exception e = new RuntimeException("" + i + "|" + loremIpsum.getWords( r.nextInt(200) + 50, r.nextInt(5) + 1 ));
+                LOG.error("Exception occured at " + i, e);
+            } else {
+                LOG.warn("" + i + "|" + loremIpsum.getWords(r.nextInt(200) + 50, r.nextInt(5) + 1));
+            }
         }
 
         return 0;
